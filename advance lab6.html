@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery LAB6</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet"type="text/css" href="Advancedlab6.css">
+
+    <style>
+        table, td {
+            border: 1px solid black;
+
+        a.mouse_is_over {
+            background-color: gainsboro;
+            font-style : italic;
+            color: navy;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<input type="text" id="add_item">
+<button id="add_button">add</button>
+
+
+
+
+<ol id="to_do_list"> </ol>
+
+
+
+<button type="button" id="delete">remove</button>
+
+<button type="button" id="fade_in_slowly">backup </button>
+<p>Click the buttons to add and remove row .</p>
+
+<table id="myTable">
+    <tr>
+        <td>Row1 cell1</td>
+        <td>Row1 cell2</td>
+    </tr>
+    <tr>
+        <td>Row2 cell1</td>
+        <td>Row2 cell2</td>
+    </tr>
+    <tr>
+        <td>Row3 cell1</td>
+        <td>Row3 cell2</td>
+    </tr>
+</table>
+<br>
+<button onclick="myDeleteFunction()">remove </button>
+
+<button onclick="myCreateFunction()">Add </button>
+
+<p id="demo"></p>
+
+</body>
+
+<script>
+
+
+    $(function() {
+
+
+
+        $("#add_button").click(function() {
+            var text = $('#add_item').val();
+            $("#to_do_list").append("<li>" + text + "</li>");
+
+
+
+        });
+    });
+    $("button").click(function(){
+        $(this).css({
+            "color" : "blue",
+            "background-color" : "green"
+        } );
+
+    });
+
+    $("#delete").click(function(){
+        $("#to_do_list").hide();
+    });
+
+    function myCreateFunction() {
+        var table = document.getElementById("myTable");
+        var row = table.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = "NEW CELL1";
+        cell2.innerHTML = Date();
+    }
+
+    function myDeleteFunction() {
+        document.getElementById("myTable").deleteRow(0);
+    }
+
+    $("ol").click(function() {
+        $(this).fadeOut();
+    });
+    $("#fade_in").click(function() {
+        $("ul").fadeIn();
+
+    });
+    $("#fade_in_slowly").click(function() {
+        $("ol").fadeIn(8000);
+
+    });
+</script>
+
+</html>

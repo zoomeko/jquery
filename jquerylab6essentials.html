@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 6, ESSENTIALS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet"type="text/css" href="jquery1.css">
+
+    <style>
+
+        a.mouse_is_over {
+            background-color: gainsboro;
+            font-style : italic;
+            color: navy;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>JQuery Selector Practice</h1>
+
+<h2>Click on the H2 elements, like me, to give them a green background.</h2>
+
+<p>Hide me when the <span>mouse</span> hovers over me</p>
+
+<P>Hide me on mouseover too! <span>Make sure I come back</span> when the mouse moves elsewhere</P>
+
+<h1>A list of items</h1>
+
+<P>Some of these things are important, some are not</P>
+<ol>
+    <li class="not_important">First thing is not important</li>
+    <li class="not_important">Second thing is also not important</li>
+    <li>But, the third thing is <span>important</span></li>
+    <li>And so is the fourth thing.</li>
+
+</ol>
+
+<h2>Buttons</h2>
+
+<button type="button" id="h1_blue">Make H1 items blue</button>
+
+<button type="button" id="remove_not_important">Remove not important items</button>
+
+<h1>Another list</h1>
+
+<p>Make these items fade or slide away when you click them. Make sure the
+    li elements in the list above don't slide away - you'll need to select only
+    li elements within this unordered list. </p>
+
+<ul>
+    <li>JQuery</li>
+    <li>is</li>
+    <li>more</li>
+    <li>concise</li>
+    <li>than</li>
+    <li>plain</li>
+    <li>JavaScript</li>
+</ul>
+<button type="button" id="fade_in">Bring back boxes</button>
+
+<button type="button" id="fade_in_slowly">Bring back boxes slowly</button>
+
+<script>
+
+    $(function() {
+
+        $("a").hover(
+            function () {
+                $(this).addClass("mouse_is_over");
+            },
+
+            function () {
+                $(this).removeClass("mouse_is_over");
+            }
+        );
+        $("span").click(function () {
+            $(this).bold();
+
+        });
+    });
+
+    $("h2").click(function() {
+        $(this).css({
+            "color": "blue",
+            "background-color": "green"
+        });
+    });
+    $("p").mouseover(function(){
+        $(this).hide({
+
+        });
+        $("p").mouseout(function(){
+            $(this).show()
+        });
+    });
+
+
+
+    $("h1").click(function(){
+        $(this).css({
+            "font-style" : "bold",
+            "background-color" : "green"
+
+        } );
+    } );
+    $("#h1_blue").click(function(){
+        $(this).css({
+            "color" : "blue",
+            "background-color" : "red"
+
+        } );
+    } );
+
+    $("#remove_not_important").click(function(){
+        $(".not_important").hide();
+    } );
+    $("ul").click(function() {
+        $(this).fadeOut();
+    });
+    $("#fade_in").click(function() {
+        $("ul").fadeIn();
+    });
+
+    $("#fade_in_slowly").click(function() {
+        $("ul").fadeIn(8000);
+
+    });
+
+
+</script>
+</body>
+</html>
